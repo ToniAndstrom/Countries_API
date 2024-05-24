@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class CallApiService
+class CallApiServiceCountry
 {
     private $httpClient;
     public function __construct(HttpClientInterface $httpClient)
