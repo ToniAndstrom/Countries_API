@@ -6,14 +6,13 @@
 {% block body %}
 
 <body>
-<form method="post">
+<form action= "weather.html.twig"method="post">
     <label for="city">Find the current weather in:</label>
     <input type="text" name="city" placeholder="city">
     <button type="submit">Submit</button>
     </form>
-</body>
-<div class="answer">
 
-</div>
+
+{{ [weatherData][name] }}
 
 {% endblock %}
