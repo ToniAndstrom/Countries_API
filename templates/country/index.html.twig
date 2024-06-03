@@ -1,38 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Countries_api
-{% endblock %}
+{% block title %}Countries API{% endblock %}
 
 {% block body %}
+<h1>Country Data</h1>
 
-<body>
-	
+<ul>
+{% for country in data %}
+<li>
+<div class="card">
+<h2>{{ country.name.common }}</h2>{{ country.flag }}
+<p>Region: {{ country.region }}</p>
+<p>Population: {{ country.population }}</p>
+{% if country.capitalInfo %}
+<p>Capital: {{ country.capitalInfo.latlng[0] }}, {{ country.capitalInfo.latlng[1] }}</p>
+<p>Capitalcity: {{ country.capital[0] }}</p>
+<p>timezone: {{ country.timezones[0] }}</p>
 
-	<h1>Country Data</h1>
-
-	{% for data in data %}
-	
-		<li>
-			<div class="card">
-				<h2>{{data.name.common}}</h2>
-
-				<p>Region:{{data.region}}</p>
-				<p class="flag">Flag:{{data.flag}}</p>
-				<p>Population:{{data.population}}</p>
-				
-			
-				
-				<a href="{{data.maps.googleMaps}}">GoogleMaps</a>
-
-			
+{% endif %}
 
 
-			</div>
-
-		</li>
-
-
-	{% endfor %}
-	</body>
+<a href="{{ country.maps.googleMaps }}">GoogleMaps</a>
+</div>
+</li>
+{% endfor %}
+</ul>
 
 {% endblock %}

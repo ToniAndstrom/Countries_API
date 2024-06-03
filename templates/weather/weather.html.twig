@@ -6,13 +6,14 @@
 {% block body %}
 
 <body>
-<form action= "weather.html.twig"method="post">
+<form method="post" action="{{path("app_weather")}}">
     <label for="city">Find the current weather in:</label>
     <input type="text" name="city" placeholder="city">
     <button type="submit">Submit</button>
     </form>
 
 
-{{ [weatherData][name] }}
+
+
 
 {% endblock %}

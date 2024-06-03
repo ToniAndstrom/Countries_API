@@ -54,7 +54,11 @@ class CountryController extends AbstractController
             curl_close($ch2);
 
             $weatherData = json_decode($result2, true);
-           
+            if (!empty($_POST["city"])) {
+                echo "Yes, city is set";    
+            } else {  
+                echo "No, city is not set";
+            }
 
             return $this->render("weather/weather.html.twig", [
                 "weatherData" => $weatherData,
