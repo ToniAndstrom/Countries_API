@@ -9,13 +9,14 @@
 {% for country in data %}
 <li>
 <div class="card">
-<h2>{{ country.name.common }}</h2>{{ country.flag }}
-<p>Region: {{ country.region }}</p>
-<p>Population: {{ country.population }}</p>
+<h2>{{ country.name.common }}</h2>
+{{ country.flag }}
+<p><strong>Continent:</strong> {{ country.region }}</p>
+<p><strong>Population:</strong> {{ country.population }}</p>
 {% if country.capitalInfo %}
-<p>Capital: {{ country.capitalInfo.latlng[0] }}, {{ country.capitalInfo.latlng[1] }}</p>
-<p>Capitalcity: {{ country.capital[0] }}</p>
-<p>timezone: {{ country.timezones[0] }}</p>
+<p><strong>Coordinates:</strong> {{ country.capitalInfo.latlng[0] }}, {{ country.capitalInfo.latlng[1] }}</p>
+<p><strong>Capital:</strong> {{ country.capital[0] }}</p>
+<p><strong>Timezone:</strong> {{ country.timezones[0] }}</p>
 
 {% endif %}
 

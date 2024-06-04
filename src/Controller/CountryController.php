@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CountryController extends AbstractController
 {
@@ -30,9 +31,11 @@ class CountryController extends AbstractController
         ]);
     }
 
-    #[Route("/weather", name: "app_weather")]
-    public function weather(Request $request): Response
-    {
+    #[Route("/weather", name: "app_weather", methods: ["GET", "POST"])]
+    public function weather(
+        Request $request,
+        SessionInterface $session
+    ): Response {
         if ($request->isMethod("POST")) {
             $city = $request->request->get("city", "default_city");
 
@@ -54,19 +57,30 @@ class CountryController extends AbstractController
             curl_close($ch2);
 
             $weatherData = json_decode($result2, true);
-            if (!empty($_POST["city"])) {
-                echo "Yes, city is set";    
-            } else {  
-                echo "No, city is not set";
-            }
 
-            return $this->render("weather/weather.html.twig", [
-                "weatherData" => $weatherData,
-                "city" => $city,
-            ]);
+            // Store the weather data in the session
+            $session->set("weatherData", $weatherData);
+            $session->set("city", $city);
+
+            // Redirect to a new route that will display the weather data
+            return $this->redirectToRoute("app_weather_show");
         }
 
-        // Render a default view if not POST request
+        // Render the form view if not a POST request
         return $this->render("weather/weather.html.twig");
+    }
+
+    #[Route("/weather/show", name: "app_weather_show")]
+    public function showWeather(SessionInterface $session): Response
+    {
+        // Retrieve the weather data from the session
+        $weatherData = $session->get("weatherData");
+        $city = $session->get("city");
+
+        // Render the weather data view
+        return $this->render("weather/show.html.twig", [
+            "weatherData" => $weatherData,
+            "city" => $city,
+        ]);
     }
 }
