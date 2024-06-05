@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.weather-current{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    width: 20rem;
+    background-color: white;
+    margin-top: 3rem;
+}
+.location{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    
+}
+.weather_high_low{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    width: 20rem;
+    background-color: white;
+    margin-top: 2rem;
+}
+.rain_snow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    width: 20rem;
+    background-color: white;
+    margin-top: 2rem;
+}
+.sun{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    width: 20rem;
+    background-color: white;
+    margin-top: 2rem;
+}
+.hour{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    width: 20rem;
+    background-color: white;
+    margin-top: 2rem;
+    margin-left:10px;
+    margin-right:10px;
+}
+.hour_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+    
+}

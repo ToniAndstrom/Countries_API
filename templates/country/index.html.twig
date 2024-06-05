@@ -7,6 +7,7 @@
 
 <ul>
 {% for country in data %}
+<div class="container">
 <li>
 <div class="card">
 <h2>{{ country.name.common }}</h2>
@@ -25,6 +26,7 @@
 </div>
 </li>
 {% endfor %}
+</div>
 </ul>
 
 {% endblock %}

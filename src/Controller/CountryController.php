@@ -39,9 +39,9 @@ class CountryController extends AbstractController
         if ($request->isMethod("POST")) {
             $city = $request->request->get("city", "default_city");
 
-            $accessToken = "a7b756eaee0a4fde87e93444242205";
+            $accessToken = "daf7866872034f69ac6225624240406";
             $url =
-                "https://api.weatherapi.com/v1/current.json?key={$accessToken}&q=" .
+                "https://api.weatherapi.com/v1/forecast.json?key={$accessToken}&q=" .
                 urlencode($city);
 
             $ch2 = curl_init($url);

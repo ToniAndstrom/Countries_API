@@ -5,10 +5,10 @@
 }
 .card{
     height:20rem;
-    width: 30rem;
+    width: 20rem;
     background-color: white;
     margin:1rem;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -19,8 +19,11 @@ li{
 }
 
 .container{
-    display:grid;
-    grid-template-columns: auto auto auto auto;
+   display:grid;
+   grid-template-columns: repeat (4,1fr);
+  
+ 
+    
 }
 p{
     margin:0.5rem;
